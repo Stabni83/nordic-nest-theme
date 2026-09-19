@@ -121,6 +121,16 @@ function nordic_nest_customize_register($wp_customize) {
         'section' => 'nordic_nest_footer',
         'type'    => 'text',
     ));
+    $wp_customize->add_setting( 'hero_button_link', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
+    $wp_customize->add_control( 'hero_button_link', array(
+        'label'   => __( 'Hero Button Link', 'nordic-nest' ),
+        'section' => 'nordic_nest_hero',
+        'type'    => 'url',
+    ) );
 }
 add_action('customize_register', 'nordic_nest_customize_register');
 

@@ -9,7 +9,18 @@ $style = $hero_image ? 'style="background-image: url(' . esc_url( $hero_image ) 
     
     <p><?php echo esc_html( get_theme_mod( 'hero_description', 'Soft forms. Natural materials. Timeless pieces for modern living.' ) ); ?></p>
     
-    <a href="#"><?php echo esc_html( get_theme_mod( 'hero_button_text', 'Shop Collection' ) ); ?></a>
+    <?php
+    $button_text = get_theme_mod( 'hero_button_text', 'Shop Collection' );
+    $button_link = get_theme_mod( 'hero_button_link' );
+
+    if ( empty( $button_link ) ) {
+        $button_link = get_permalink( wc_get_page_id( 'shop' ) );
+    }
+    ?>
+
+    <a href="<?php echo esc_url( $button_link ); ?>">
+        <?php echo esc_html( $button_text ); ?>
+    </a>
 </section>
 
 <section class="home-products">
